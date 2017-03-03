@@ -1,4 +1,4 @@
-package com.eme.aelegant.model.net.javabean;
+package com.eme.aelegant.model.javabean;
 
 /**
  * Created by 蔡小木 on 2016/3/6 0006.

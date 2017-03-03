@@ -1,6 +1,6 @@
 package com.eme.aelegant.contract;
 
-import com.eme.aelegant.model.net.javabean.ZhihuDaily;
+import com.eme.aelegant.model.javabean.ZhihuDaily;
 import com.eme.aelegant.presenter.MainPresenter;
 import com.eme.elegant.BasePresenter;
 import com.eme.elegant.BaseView;

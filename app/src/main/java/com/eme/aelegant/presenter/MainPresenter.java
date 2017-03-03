@@ -7,7 +7,7 @@ import com.eme.aelegant.AppModule;
 import com.eme.aelegant.contract.MainContract;
 import com.eme.aelegant.model.net.ApiClient;
 import com.eme.aelegant.model.net.api.ZhihuApi;
-import com.eme.aelegant.model.net.javabean.ZhihuDaily;
+import com.eme.aelegant.model.javabean.ZhihuDaily;
 import com.eme.aelegant.presenter.component.DaggerPresenterComponent;
 
 import javax.inject.Inject;
@@ -39,8 +39,6 @@ public class MainPresenter implements MainContract.Presenter {
         compositeSubscription = new CompositeSubscription();
         zhihuApi= ApiClient.getZhihuApi();
         DaggerPresenterComponent.builder().appModule(new AppModule(context)).build().inject(this);
-//        DaggerPresenterComponent.builder().appModule(new AppModule(context)).build().inject(this);
-//        DaggerApiComponent.builder().apiModule(new ApiModule()).build().inject(this);
 
     }
 

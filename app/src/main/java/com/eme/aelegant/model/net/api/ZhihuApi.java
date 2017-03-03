@@ -1,7 +1,7 @@
 package com.eme.aelegant.model.net.api;
 
 
-import com.eme.aelegant.model.net.javabean.ZhihuDaily;
+import com.eme.aelegant.model.javabean.ZhihuDaily;
 
 import retrofit2.http.GET;
 import rx.Observable;

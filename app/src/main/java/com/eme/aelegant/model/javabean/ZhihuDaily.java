@@ -1,4 +1,4 @@
-package com.eme.aelegant.model.net.javabean;
+package com.eme.aelegant.model.javabean;
 
 import java.util.ArrayList;
 

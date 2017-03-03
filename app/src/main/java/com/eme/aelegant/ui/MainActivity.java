@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.eme.aelegant.R;
 import com.eme.aelegant.contract.MainContract;
-import com.eme.aelegant.model.net.javabean.ZhihuDaily;
+import com.eme.aelegant.model.javabean.ZhihuDaily;
 import com.eme.aelegant.presenter.MainPresenter;
 import com.eme.elegant.BaseRxActivity;
 
