@@ -4,7 +4,7 @@ import android.app.Application;
 
 /**
  *
- * 应用的技术:   Dagger2     RxJava      Retrofit    MVP
+ * 应用的技术:   Dagger2     MVP     RxJava      Retrofit
  *
  *
  * Created by dijiaoliang on 17/3/2.

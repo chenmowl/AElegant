@@ -5,9 +5,9 @@ import android.util.Log;
 
 import com.eme.aelegant.AppModule;
 import com.eme.aelegant.contract.MainContract;
+import com.eme.aelegant.model.javabean.ZhihuDaily;
 import com.eme.aelegant.model.net.ApiClient;
 import com.eme.aelegant.model.net.api.ZhihuApi;
-import com.eme.aelegant.model.javabean.ZhihuDaily;
 import com.eme.aelegant.presenter.component.DaggerPresenterComponent;
 
 import javax.inject.Inject;

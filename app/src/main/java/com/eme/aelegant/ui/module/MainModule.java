@@ -1,5 +1,6 @@
 package com.eme.aelegant.ui.module;
 
+import com.eme.aelegant.annotation.ActivityScope;
 import com.eme.aelegant.contract.MainContract;
 
 import dagger.Module;
@@ -17,6 +18,7 @@ public class MainModule {
         this.view = view;
     }
 
+    @ActivityScope
     @Provides
     MainContract.View getView(){
         return view;

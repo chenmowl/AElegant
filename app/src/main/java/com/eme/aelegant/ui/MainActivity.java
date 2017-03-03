@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.eme.aelegant.App;
 import com.eme.aelegant.R;
 import com.eme.aelegant.contract.MainContract;
 import com.eme.aelegant.model.javabean.ZhihuDaily;
 import com.eme.aelegant.presenter.MainPresenter;
+import com.eme.aelegant.ui.component.DaggerMainComponent;
+import com.eme.aelegant.ui.module.MainModule;
 import com.eme.elegant.BaseRxActivity;
 
 import javax.inject.Inject;
@@ -33,12 +36,15 @@ public class MainActivity extends BaseRxActivity implements MainContract.View {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-//        DaggerMainComponent.builder().appComponent(App.getAppInstance().getAppComponent()).mainModule(new MainModule(this)).build().inject(this);
+        componentInit();
         init();
     }
 
-    private void init() {
+    private void componentInit() {
+        DaggerMainComponent.builder().appComponent(App.getAppInstance().getAppComponent()).mainModule(new MainModule(this)).build().inject(this);
+    }
 
+    private void init() {
         mainPresenter.subscribe();
     }
 
