@@ -1,14 +1,11 @@
 package com.eme.aelegant.presenter;
 
-import android.content.Context;
 import android.util.Log;
 
-import com.eme.aelegant.AppModule;
+import com.eme.aelegant.base.BaseView;
 import com.eme.aelegant.contract.MainContract;
-import com.eme.aelegant.model.javabean.ZhihuDaily;
-import com.eme.aelegant.model.net.ApiClient;
-import com.eme.aelegant.model.net.api.ZhihuApi;
-import com.eme.aelegant.presenter.component.DaggerPresenterComponent;
+import com.eme.aelegant.model.bean.ZhihuDaily;
+import com.eme.aelegant.model.net.RetrofitHelper;
 
 import javax.inject.Inject;
 
@@ -30,16 +27,13 @@ public class MainPresenter implements MainContract.Presenter {
 
     private CompositeSubscription compositeSubscription;
 
-    ZhihuApi zhihuApi;
+    RetrofitHelper retrofitHelper;
 
     @Inject
-    public MainPresenter(Context context, MainContract.View view) {
-        this.view = view;
-        this.view.setPresenter(this);
+    public MainPresenter(BaseView view, RetrofitHelper retrofitHelper) {
+        this.view = (MainContract.View)view;
+        this.retrofitHelper=retrofitHelper;
         compositeSubscription = new CompositeSubscription();
-        zhihuApi= ApiClient.getZhihuApi();
-        DaggerPresenterComponent.builder().appModule(new AppModule(context)).build().inject(this);
-
     }
 
     @Override
@@ -49,7 +43,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     private void loadData() {
-        Subscription subscription = zhihuApi.getLastDaily()
+        Subscription subscription = retrofitHelper.getLastDaily()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<ZhihuDaily>() {

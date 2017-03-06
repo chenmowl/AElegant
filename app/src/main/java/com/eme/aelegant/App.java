@@ -2,6 +2,11 @@ package com.eme.aelegant;
 
 import android.app.Application;
 
+import com.eme.aelegant.injector.component.AppComponent;
+import com.eme.aelegant.injector.component.DaggerAppComponent;
+import com.eme.aelegant.injector.module.AppModule;
+import com.eme.aelegant.injector.module.NetModule;
+
 /**
  *
  * 应用的技术:   Dagger2     MVP     RxJava      Retrofit
@@ -19,7 +24,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         app = this;
-        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
+        appComponent= DaggerAppComponent.builder().appModule(new AppModule()).netModule(new NetModule()).build();
     }
 
     public static App getAppInstance() {

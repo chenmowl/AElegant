@@ -6,14 +6,12 @@ import android.widget.TextView;
 
 import com.eme.aelegant.App;
 import com.eme.aelegant.R;
+import com.eme.aelegant.base.BaseRxActivity;
 import com.eme.aelegant.contract.MainContract;
-import com.eme.aelegant.model.javabean.ZhihuDaily;
+import com.eme.aelegant.injector.component.DaggerViewComponent;
+import com.eme.aelegant.injector.module.ViewModule;
+import com.eme.aelegant.model.bean.ZhihuDaily;
 import com.eme.aelegant.presenter.MainPresenter;
-import com.eme.aelegant.ui.component.DaggerMainComponent;
-import com.eme.aelegant.ui.module.MainModule;
-import com.eme.elegant.BaseRxActivity;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,40 +19,39 @@ import butterknife.ButterKnife;
 /**
  * 应用入口页
  */
-public class MainActivity extends BaseRxActivity implements MainContract.View {
+public class MainActivity extends BaseRxActivity<MainPresenter> implements MainContract.View {
+
 
     @BindView(R.id.tv_show)
     TextView tvShow;
     @BindView(R.id.activity_main)
     RelativeLayout activityMain;
 
-    @Inject
-    MainPresenter mainPresenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
-        componentInit();
-        init();
-    }
-
-    private void componentInit() {
-        DaggerMainComponent.builder().appComponent(App.getAppInstance().getAppComponent()).mainModule(new MainModule(this)).build().inject(this);
-    }
-
-    private void init() {
-        mainPresenter.subscribe();
-    }
-
-    @Override
-    public void setPresenter(MainPresenter presenter) {
-        mainPresenter=presenter;
     }
 
     @Override
     public void show(ZhihuDaily zhihuDaily) {
         tvShow.setText(zhihuDaily.toString());
     }
+
+    @Override
+    protected void initInject() {
+        DaggerViewComponent.builder().appComponent(App.getAppInstance().getAppComponent()).viewModule(new ViewModule(this)).build().inject(this);
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initEventAndData() {
+        mPresenter.subscribe();
+    }
+
 }

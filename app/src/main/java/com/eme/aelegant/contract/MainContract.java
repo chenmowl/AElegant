@@ -1,20 +1,20 @@
 package com.eme.aelegant.contract;
 
-import com.eme.aelegant.model.javabean.ZhihuDaily;
-import com.eme.aelegant.presenter.MainPresenter;
-import com.eme.elegant.BasePresenter;
-import com.eme.elegant.BaseView;
+import com.eme.aelegant.base.BasePresenter;
+import com.eme.aelegant.base.BaseView;
+import com.eme.aelegant.model.bean.ZhihuDaily;
 
 /**
  * Created by dijiaoliang on 17/3/2.
  */
 public interface MainContract {
 
-    interface View extends BaseView<MainPresenter>{
+    interface View extends BaseView {
         void show(ZhihuDaily zhihuDaily);
     }
 
-    interface Presenter extends BasePresenter{
+    interface Presenter extends BasePresenter {
+
     }
 
 }
